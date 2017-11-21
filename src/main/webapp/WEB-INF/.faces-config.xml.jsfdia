@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="doLogin::#ind.xhtml" NAME="output"
+    PATH="/ind.xhtml" TARGET="rules:#ind.xhtml" TITLE="doLogin" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ind.xhtml" PATH="/ind.xhtml" model-entity="JSFProcessGroup"/>
+</PROCESS>

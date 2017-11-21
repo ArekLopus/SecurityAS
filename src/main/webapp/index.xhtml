@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+
+    <h:head>
+        <title>Start page</title>
+    </h:head>
+    
+    <h:body id="body" style="font: 14px/1.4 Arial;">
+        <h2>Welcome #{startBeanCDI.name}!</h2>
+        #{startBeanCDI.info()}
+        Principal: #{startBeanCDI.principal}<br/>
+        <br/>
+            
+        <h:form>
+            <h:button value="Basic/Form Authentication" outcome="/basicAuth/index.xhtml" />
+            <br/>
+            <h:commandButton value="Basic/Form Authentication" action="/basicAuth/index.html/?faces-redirect=true" />
+            <br/>
+            <br/>
+            <h:button value="Programmatic Login - Servlet (not arka2 LM)"  onclick="window.location.href='/Security/Login'; return false;" />
+            <br/>
+            <h:button value="Programmatic Login - Servlet (arka2 LM)"  onclick="window.location.href='/Security/Login2'; return false;" />
+            <br/>
+            <h:button value="Programmatic Login - JSF (not arka2 LM)"  outcome="/programmaticLogin/index.xhtml" /> 
+            <br/>
+            <h:button value="Programmatic Login - JSF Form (w/o j_)"  outcome="/programmaticLogin/auth.xhtml" />
+            <br/>
+            <br/>
+            <br/>
+        </h:form>
+
+        
+        
+    </h:body>
+</html>
+

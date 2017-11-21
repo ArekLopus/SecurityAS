@@ -1,0 +1,17 @@
+connect
+
+/subsystem=security/security-domain=arka3:add(cache-type=default)
+/subsystem=security/security-domain=arka3/authentication=classic: \
+    add( \
+        login-modules=[{ \
+            "code"=>"loginModuleSalted.MyLoginModuleDB", \
+            "flag"=>"required", \
+            "module"=>"myCustomLoginModule", \
+            "module-options"=>[ \
+                "dsJndiName"=>"java:jboss/datasources/ExampleDS", \
+                "rolesQuery"=>"SELECT role, 'Roles' FROM user WHERE name=?", \
+                "hashAlgorithm"=>"SHA-512", \
+                "hashEncoding"=>"hex", \
+                "principalsQuery"=>"SELECT password from user WHERE name=?"] \
+            }])
+reload

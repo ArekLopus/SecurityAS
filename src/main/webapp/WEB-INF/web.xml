@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+ <context-param>
+  <param-name>javax.faces.PROJECT_STAGE</param-name>
+  <param-value>Development</param-value>
+ </context-param>
+ 
+ <servlet>
+  <servlet-name>Faces Servlet</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ 
+ <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ 
+  <session-config>
+    <session-timeout>30</session-timeout>
+    <!-- <cookie-config>
+      <http-only>true</http-only>
+      <secure>true</secure>
+    </cookie-config>
+    <tracking-mode>SSL</tracking-mode> -->
+ </session-config>
+
+
+ 
+ <welcome-file-list>
+  <welcome-file>index.xhtml</welcome-file>
+ </welcome-file-list>
+ 
+ <error-page>
+  <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+  <location>/index.xhtml</location>
+ </error-page>
+
+<!-- <security-constraint>
+  <web-resource-collection>
+   <web-resource-name>Main to SSL</web-resource-name>
+   <url-pattern>/HelloServlet</url-pattern>
+   <http-method>GET</http-method>
+   <http-method>POST</http-method>
+  </web-resource-collection>
+  
+  <auth-constraint>
+   <role-name>*</role-name>
+  </auth-constraint>
+ 
+  <user-data-constraint>
+    <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+  </user-data-constraint>
+</security-constraint>
+ -->
+
+ <security-constraint>
+  <web-resource-collection>
+   <web-resource-name>All of them</web-resource-name>
+   <url-pattern>/basicAuth/*</url-pattern>
+   <url-pattern>/res/*</url-pattern>
+   <http-method>GET</http-method>
+   <http-method>POST</http-method>
+  </web-resource-collection>
+  
+  <auth-constraint>
+   <role-name>Administrator</role-name>
+   <role-name>Developer</role-name>
+  </auth-constraint>
+ 
+  <user-data-constraint>
+    <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+   <login-config>
+     <auth-method>FORM</auth-method>
+     <form-login-config>
+       <form-login-page>/basicAuth/auth.html</form-login-page>
+       <form-error-page>/index.xhtml</form-error-page>
+     </form-login-config>
+   </login-config>
+
+<!--  <login-config>
+  <auth-method>BASIC</auth-method>
+ </login-config> -->
+
+   <security-role>
+     <role-name>Administrator</role-name>
+   </security-role>
+   <security-role>
+     <role-name>Developer</role-name>
+   </security-role>
+   <security-role>
+     <role-name>guest</role-name>
+   </security-role>
+   
+   <!-- <error-page>
+      <exception-type>javax.servlet.ServletException</exception-type>
+      <location>/ind.xhtml</location>
+    </error-page> -->
+</web-app>
